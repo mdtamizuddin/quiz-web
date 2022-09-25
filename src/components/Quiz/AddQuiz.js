@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { toast } from 'react-hot-toast'
 import React from 'react'
 import { useState } from 'react'
 import SortText from '../SortText/SortText'
@@ -15,13 +16,13 @@ const AddQuiz = () => {
     const onHandleSubmit = (e) => {
         e.preventDefault()
         if (!question) {
-            alert("Insert A Qustion")
+            toast.error("Insert A Qustion")
         }
         else if (qCorrect === "no") {
-            alert("Select Correct Ans.")
+            toast.error("Select Correct Ans.")
         }
         else {
-            fetch('https://quiz-server-ouc1-8ryo6cmqm-mdtamiz.vercel.app/quiz', {
+            fetch('https://quiz-server-ouc1.vercel.app/quiz', {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'
@@ -41,7 +42,7 @@ const AddQuiz = () => {
         }
     }
     const { isLoading, data: allQuiz, refetch } = useQuery(['repoData', type], () =>
-        fetch(`https://quiz-server-ouc1-8ryo6cmqm-mdtamiz.vercel.app/${type}`,)
+        fetch(`https://quiz-server-ouc1.vercel.app/${type}`,)
             .then(res => res.json())
     )
     if (isLoading) return 'Loading...'
