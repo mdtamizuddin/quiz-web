@@ -17,7 +17,7 @@ const SortText = ({ refetch }) => {
         }
 
         else {
-            fetch('http://localhost:5000/sort', {
+            fetch('https://quiz-server-ouc1-8ryo6cmqm-mdtamiz.vercel.app/sort', {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'

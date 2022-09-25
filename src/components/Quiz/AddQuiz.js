@@ -41,7 +41,7 @@ const AddQuiz = () => {
         }
     }
     const { isLoading, data: allQuiz, refetch } = useQuery(['repoData', type], () =>
-        fetch(`http://localhost:5000/${type}`,)
+        fetch(`https://quiz-server-ouc1-8ryo6cmqm-mdtamiz.vercel.app/${type}`,)
             .then(res => res.json())
     )
     if (isLoading) return 'Loading...'
